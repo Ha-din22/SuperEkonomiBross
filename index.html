@@ -76,17 +76,18 @@
       // config.matchWebGLToCanvasSize = false;
 
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-       if (window.orientation === 90 || window.orientation === -90) {
-        canvas.style.width = "100vh";
-        canvas.style.height = "100vw";
-        canvas.style.transform = "rotate(-90deg) translateX(-100%)";
-    } else {
-        canvas.style.width = "100vw";
-        canvas.style.height = "100vh";
+        canvas.style.width = "960px";
+    canvas.style.height = "600px";
+
+    // To lower canvas resolution on mobile devices to gain some
+    // performance, uncomment the following line:
+    // config.devicePixelRatio = 1;
+
+   if(window.innerWidth < window.innerHeight) {
+        unityShowBanner('Please use landscape mode');
+        // Stop further execution of the code
+        throw new Error('Please use landscape mode');
     }
-
-
-        unityShowBanner('TOLONG MODE LANDSCAPE!!');
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 
